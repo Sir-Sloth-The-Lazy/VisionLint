@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vision_lint"
+version = "0.1.0"
+description = "Automated quality assurance for Computer Vision datasets"
+authors = [
+  { name="VisionLint Team", email="maintainer@visionlint.com" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "opencv-python-headless",
+    "pillow",
+    "numpy",
+    "click",
+    "rich",
+    "torch",
+    "transformers",
+]
+
+[project.scripts]
+visionlint = "vision_lint.cli.main:cli"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
