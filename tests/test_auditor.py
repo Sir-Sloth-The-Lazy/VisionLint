@@ -5,11 +5,6 @@ import pytest
 from PIL import Image
 import cv2
 import numpy as np
-import cv2
-import numpy as np
-import sys
-# Ensure src is in path for tests if not installed in editable mode
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 from vision_lint.core.auditor import IntegrityLinter
 
 @pytest.fixture

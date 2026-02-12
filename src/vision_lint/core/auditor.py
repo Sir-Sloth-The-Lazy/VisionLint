@@ -1,13 +1,12 @@
 import os
-from typing import List, Tuple
+from typing import List
 import cv2
 import numpy as np
 from PIL import Image, UnidentifiedImageError
 import logging
 from vision_lint.base import BaseLinter, LintResult
 
-# Configure logging
-logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 class IntegrityLinter(BaseLinter):
