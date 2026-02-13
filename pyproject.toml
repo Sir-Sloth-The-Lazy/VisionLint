@@ -21,6 +21,11 @@ dependencies = [
     "numpy",
     "click",
     "rich",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+ml = [
     "torch",
     "transformers",
 ]
@@ -28,5 +33,9 @@ dependencies = [
 [project.scripts]
 visionlint = "vision_lint.cli.main:cli"
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]
