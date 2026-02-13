@@ -27,7 +27,21 @@ class IntegrityLinter(BaseLinter):
                 issue_type="Path Error",
                 severity="Critical",
                 message="Path does not exist"
+
             )]
+
+        # Handle single file check
+        if os.path.isfile(data_path):
+            if any(data_path.lower().endswith(ext) for ext in self.supported_extensions):
+                return self.check_image_integrity(data_path)
+            else:
+                return [LintResult(
+                    file_path=data_path,
+                    linter_name="IntegrityLinter",
+                    issue_type="No Images Found",
+                    severity="Critical",
+                    message=f"File extension not supported. Supported: {self.supported_extensions}"
+                )]
 
         images_found = False
         for root, _, files in os.walk(data_path):

@@ -114,3 +114,18 @@ def test_linter_skips_hidden_files(test_dataset):
     
     hidden_issues = [r for r in results if r.file_path == hidden_path]
     assert len(hidden_issues) == 0
+
+def test_linter_single_file(test_dataset):
+    linter = IntegrityLinter()
+    valid_path = os.path.join(test_dataset, "valid.jpg")
+    results = linter.check(valid_path)
+    assert len(results) == 0
+
+def test_linter_single_file_unsupported(test_dataset):
+    linter = IntegrityLinter()
+    text_path = os.path.join(test_dataset, "text.txt")
+    with open(text_path, "w") as f:
+        f.write("text")
+    results = linter.check(text_path)
+    assert len(results) == 1
+    assert results[0].issue_type == "No Images Found"
